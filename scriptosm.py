@@ -18,7 +18,7 @@ for poly in poly_files:
     clip2province = "/usr/sbin/osmconvert indonesia-latest.osm.pbf -B=/var/www/html/data/poly/{0}.poly -o=pbf/{0}.pbf".format(poly)
     os.system(clip2province)
 
-    # Get permission pbf data
+    # Get permission pbf data in server
     permission = "chmod +r pbf/*"
     os.system(permission)
 
