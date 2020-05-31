@@ -8,12 +8,19 @@ poly_files = ['Aceh', 'SumateraUtara', 'SumateraBarat', 'Riau', 'KepulauanRiau',
               'MalukuUtara', 'SulawesiUtara', 'Gorontalo', 'SulawesiTengah', 'SulawesiBarat', 'SulawesiSelatan',
               'SulawesiTenggara', 'Papua', 'PapuaBarat']
 
+#check if pbf and stat folder exist, otherwise create it
+if not os.path.exists('pbf'):
+    os.makedirs('pbf')
+
+if not os.path.exists('stat`'):
+    os.makedirs('stat')
+
 # downloading pbf data in geofabrik
 downloadpbf = "wget -N http://download.geofabrik.de/asia/indonesia-latest.osm.pbf"
 os.system(downloadpbf)
 
 for poly in poly_files:
-    
+
     # clipping data into pbf data
     clip2province = "osmconvert indonesia-latest.osm.pbf -B=data/poly/{0}.poly -o=pbf/{0}.pbf".format(poly)
     os.system(clip2province)
