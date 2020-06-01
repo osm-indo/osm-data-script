@@ -20,8 +20,8 @@ if not os.path.exists('stat'):
     os.makedirs('stat')
 
 # downloading pbf data in geofabrik
-# downloadpbf = "wget -N http://download.geofabrik.de/asia/indonesia-latest.osm.pbf"
-# os.system(downloadpbf)
+downloadpbf = "wget -N http://download.geofabrik.de/asia/indonesia-latest.osm.pbf"
+os.system(downloadpbf)
 
 for poly in poly_files:
 
