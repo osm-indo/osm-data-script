@@ -3,6 +3,7 @@ import sys
 
 polypath = 'poly/'
 poly_files = []
+country_file = sys.argv[1]
 
 #list all poly files in the poly directory using os.listdir
 for entry in os.listdir(polypath):
@@ -20,13 +21,13 @@ if not os.path.exists('stat'):
     os.makedirs('stat')
 
 # downloading pbf data in geofabrik
-downloadpbf = "wget -N http://download.geofabrik.de/asia/indonesia-latest.osm.pbf"
+downloadpbf = "wget -N {0}".format(country_file)
 os.system(downloadpbf)
 
 for poly in poly_files:
 
     # clipping data into pbf data
-    clip2province = "osmconvert indonesia-latest.osm.pbf -B=poly/{0}.poly -o=pbf/{0}.pbf".format(poly)
+    clip2province = "osmconvert {0} -B=poly/{1}.poly -o=pbf/{1}.pbf".format(os.path.basename(country_file),poly)
     os.system(clip2province)
 
     # give read permission to pbf data
